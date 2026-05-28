@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import candidateLogin from "../assets/candidateLogin.png";
+
 import {
   fetchProfile,
   createProfileThunk,
   updateProfileThunk,
   uploadResumeThunk,
 } from "../features/profile/profileSlice";
+import Navbar from "../components/Navbar";
 
 function Profile() {
 
@@ -126,43 +129,40 @@ function Profile() {
   };
 
   return (
+    <>
+    <Navbar/>
 
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-10">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6 md:p-10">
 
-      <div className="bg-white w-full max-w-5xl rounded-3xl shadow-lg grid grid-cols-2 overflow-hidden">
+      <div className="bg-white w-full max-w-6xl rounded-2xl md:rounded-3xl shadow-xl grid grid-cols-1 md:grid-cols-2 overflow-hidden">
 
         {/* LEFT SIDE */}
+        <div className="hidden md:flex items-center justify-center bg-gray-100 p-6 lg:p-8">
 
-        <div className="bg-blue-600 text-white p-10 flex flex-col justify-center">
-
-          <h1 className="text-5xl font-bold mb-6">
-            Welcome to Sckilled
-          </h1>
-
-          <p className="text-lg leading-8">
-            Build your professional profile and
-            stand out to recruiters.
-          </p>
+          <img
+            src={candidateLogin}
+            alt="Profile Illustration"
+            className="w-full max-w-md object-contain"
+            />
 
         </div>
 
         {/* RIGHT SIDE */}
+        <div className="p-5 sm:p-7 md:p-10">
 
-        <div className="p-10">
-
-          <h2 className="text-3xl font-bold mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 md:mb-8">
             Candidate Profile
           </h2>
 
           <form
             onSubmit={handleSubmit}
             className="space-y-5"
-          >
+            >
 
             {/* HEADLINE */}
-
             <div>
-              <label className="block mb-2 font-medium">
+
+              <label className="block mb-2 font-medium text-sm sm:text-base">
                 Headline
               </label>
 
@@ -172,14 +172,15 @@ function Profile() {
                 value={formData.headline}
                 onChange={handleChange}
                 placeholder="Frontend Developer"
-                className="w-full border rounded-xl p-3"
-              />
+                className="w-full border rounded-xl p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
             </div>
 
             {/* SKILLS */}
-
             <div>
-              <label className="block mb-2 font-medium">
+
+              <label className="block mb-2 font-medium text-sm sm:text-base">
                 Skills
               </label>
 
@@ -189,14 +190,15 @@ function Profile() {
                 value={formData.skills}
                 onChange={handleChange}
                 placeholder="React, Node.js, MongoDB"
-                className="w-full border rounded-xl p-3"
-              />
+                className="w-full border rounded-xl p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
             </div>
 
             {/* EXPERIENCE */}
-
             <div>
-              <label className="block mb-2 font-medium">
+
+              <label className="block mb-2 font-medium text-sm sm:text-base">
                 Experience
               </label>
 
@@ -206,14 +208,15 @@ function Profile() {
                 value={formData.experience}
                 onChange={handleChange}
                 placeholder="2"
-                className="w-full border rounded-xl p-3"
+                className="w-full border rounded-xl p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
+
             </div>
 
             {/* LOCATION */}
-
             <div>
-              <label className="block mb-2 font-medium">
+
+              <label className="block mb-2 font-medium text-sm sm:text-base">
                 Location
               </label>
 
@@ -223,14 +226,15 @@ function Profile() {
                 value={formData.location}
                 onChange={handleChange}
                 placeholder="Vadodara"
-                className="w-full border rounded-xl p-3"
-              />
+                className="w-full border rounded-xl p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
             </div>
 
             {/* GITHUB */}
-
             <div>
-              <label className="block mb-2 font-medium">
+
+              <label className="block mb-2 font-medium text-sm sm:text-base">
                 Github
               </label>
 
@@ -240,14 +244,15 @@ function Profile() {
                 value={formData.github}
                 onChange={handleChange}
                 placeholder="https://github.com/username"
-                className="w-full border rounded-xl p-3"
-              />
+                className="w-full border rounded-xl p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
             </div>
 
             {/* LINKEDIN */}
-
             <div>
-              <label className="block mb-2 font-medium">
+
+              <label className="block mb-2 font-medium text-sm sm:text-base">
                 LinkedIn
               </label>
 
@@ -257,14 +262,15 @@ function Profile() {
                 value={formData.linkdin}
                 onChange={handleChange}
                 placeholder="https://linkedin.com/in/username"
-                className="w-full border rounded-xl p-3"
-              />
+                className="w-full border rounded-xl p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
             </div>
 
             {/* RESUME */}
-
             <div>
-              <label className="block mb-2 font-medium">
+
+              <label className="block mb-2 font-medium text-sm sm:text-base">
                 Upload Resume
               </label>
 
@@ -273,24 +279,24 @@ function Profile() {
                 onChange={(e) =>
                   setResume(e.target.files[0])
                 }
-                className="w-full"
-              />
+                className="w-full text-sm sm:text-base"
+                />
 
               <button
                 type="button"
                 onClick={handleResumeUpload}
-                className="mt-3 bg-gray-800 text-white px-5 py-2 rounded-xl"
-              >
+                className="mt-3 w-full sm:w-auto bg-gray-800 hover:bg-gray-900 transition text-white px-5 py-2.5 rounded-xl"
+                >
                 Upload Resume
               </button>
+
             </div>
 
             {/* SUBMIT */}
-
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold"
-            >
+              className="w-full bg-blue-600 hover:bg-blue-700 transition text-white py-3 rounded-xl text-base sm:text-lg font-semibold"
+              >
               {profile ? "Update Profile" : "Create Profile"}
             </button>
 
@@ -301,6 +307,7 @@ function Profile() {
       </div>
 
     </div>
+              </>
   );
 }
 

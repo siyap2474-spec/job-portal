@@ -1,3 +1,4 @@
+const recruiterRoutes = require("./Routes/recruiterRoutes");
 const passport = require("passport");
 
 const session = require("express-session");
@@ -61,6 +62,9 @@ app.use("/api/dashboard", dashboardRoutes);
 //Notification api
 const notificationRoutes = require("./Routes/notificationRoutes");
 app.use("/api/notifications", notificationRoutes);
+
+//recruiter can find candidate api
+app.use("/api/recruiter", recruiterRoutes);
 
 //basic server created
 app.get("/", (req, res) => {

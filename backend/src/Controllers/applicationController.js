@@ -94,10 +94,35 @@ const getApplicantsForJob = async (req,res) => {
   }
   const applications = await Application.find({
     job : jobId
-  }).populate("applicant","-password");
+  }).populate({
+  path: "applicant",
+  select: "-password"
+});
+
+const CandidateProfile = require("../Models/CandidateProfile");
+
+const applicationsWithProfiles =
+  await Promise.all(
+
+    applications.map(async (app) => {
+
+      const profile =
+        await CandidateProfile.findOne({
+          user: app.applicant._id
+        });
+
+      return {
+        ...app.toObject(),
+        profile
+      };
+
+    })
+
+  );
   res.status(200).json({
     success: true,
-    applications
+      applications: applicationsWithProfiles
+
   });
 }
   
@@ -109,7 +134,6 @@ const getApplicantsForJob = async (req,res) => {
 };
 
 //UPDATE APPLICATION STATUS
-
 const updateApplicationStatus = async (req, res) => {
   try{
     const applicationId = req.params.applicationId;

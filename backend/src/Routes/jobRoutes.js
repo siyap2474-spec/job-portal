@@ -4,7 +4,7 @@ const router = express.Router();
 const authMiddleware = require("../Middleware/authMiddleware");
 const roleMiddleware = require("../Middleware/roleMiddleware");
 
-const {createJob, getAllJobs, getSingleJob, updateJob, deleteJob} = require('../Controllers/jobController');
+const {createJob, getAllJobs, getSingleJob, updateJob, deleteJob, getRecruiterJobs} = require('../Controllers/jobController');
 
 const {handleValidation, jobValidation} = require("../Middleware/validators");
 
@@ -19,6 +19,14 @@ router.post('/create-job',
 
  //getAllJobs api
 router.get("/", getAllJobs);
+
+//getRecruiterJob api
+router.get(
+  "/recruiter/my-jobs",
+  authMiddleware,
+  roleMiddleware("RECRUITER"),
+  getRecruiterJobs
+);
 
 //getSingleJob api
 router.get("/:id",getSingleJob)

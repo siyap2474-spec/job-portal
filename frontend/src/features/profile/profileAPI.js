@@ -6,7 +6,7 @@ export const getMyProfile = () => {
 };
 
 //create profile
-export const createProfile = () => {
+export const createProfile = (data) => {
     return api.post("/profile", data);
 };
 

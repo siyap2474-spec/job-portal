@@ -255,4 +255,29 @@ const deleteJob = async (req, res) => {
   }
 };
 
-module.exports = {createJob, getAllJobs, getSingleJob, updateJob, deleteJob};
+// GET RECRUITER JOBS
+const getRecruiterJobs = async (req, res) => {
+
+  try {
+
+    const jobs = await Job.find({
+      createdBy: req.user.id
+    }).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      jobs
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+
+  }
+
+};
+
+module.exports = {createJob, getAllJobs, getSingleJob, updateJob, deleteJob, getRecruiterJobs};

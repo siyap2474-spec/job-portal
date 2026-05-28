@@ -1,43 +1,47 @@
 import { useNavigate } from "react-router-dom";
 
-
 function JobCard({ job }) {
-const navigate = useNavigate();
-    return (
+  const navigate = useNavigate();
 
-        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
-            <h2 className="text-2xl font-bold">
-                {job.title}
-            </h2>
+  return (
+    <div className="bg-white p-4 sm:p-5 md:p-6 rounded-2xl border border-gray-200 shadow-md hover:shadow-xl transition duration-300 w-full">
 
-            <p className="mt-2 text-gray-500">
-                {job.company}
-            </p>
+      {/* TITLE */}
+      <h2 className="text-xl sm:text-2xl font-bold break-words">
+        {job.title}
+      </h2>
 
-            <p className="mt-2">
-                {job.location}
-            </p>
+      {/* COMPANY */}
+      <p className="mt-2 text-gray-500 text-sm sm:text-base break-words">
+        {job.company}
+      </p>
 
-            <p className="mt-2">
-                {job.jobType}
-            </p>
+      {/* LOCATION */}
+      <p className="mt-2 text-sm sm:text-base text-gray-700">
+        {job.location}
+      </p>
 
-            <p className="mt-2">
-                {typeof job.experience === "string"
-                    ? job.experience
-                    : `${job.experience?.min} - ${job.experience?.max} years`}
-            </p>
+      {/* JOB TYPE */}
+      <p className="mt-2 text-sm sm:text-base text-gray-700">
+        {job.jobType}
+      </p>
 
-            <button
-  onClick={() => navigate(`/jobs/${job._id}`)}
-  className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-xl"
->
-  Apply
-</button>
+      {/* EXPERIENCE */}
+      <p className="mt-2 text-sm sm:text-base text-gray-700">
+        {typeof job.experience === "string"
+          ? job.experience
+          : `${job.experience?.min} - ${job.experience?.max} years`}
+      </p>
 
-        </div>
-
-    );
+      {/* BUTTON */}
+      <button
+        onClick={() => navigate(`/jobs/${job._id}`)}
+        className="mt-5 w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl transition duration-300"
+      >
+        Apply
+      </button>
+    </div>
+  );
 }
 
 export default JobCard;

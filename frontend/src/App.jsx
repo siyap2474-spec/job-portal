@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 
 
@@ -7,7 +7,7 @@ import AppRoutes from "./routes/AppRoutes";
 function App(){
   return(
     <BrowserRouter>
-<Navbar/>
+{/* <Navbar/> */}
 <AppRoutes/>
     </BrowserRouter>
   )

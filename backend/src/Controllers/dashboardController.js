@@ -80,13 +80,13 @@ const savedJobs = await SavedJob.countDocuments({
         let filledField = 0; 
 
         if(profile.headline) filledField++;
-        if(profile.skills && profile.skills.length > 0) filledField;
+        if(profile.skills && profile.skills.length > 0) filledField++;
         if(profile.experience > 0) filledField++;
-        if(profile.education && profile.education.length > 0) filledField;
-        if(profile.resume) filledField;
-        if(profile.location) filledField;
-        if(profile.github) filledField;
-        if(profile.linkdin) filledField;
+        if(profile.education && profile.education.length > 0) filledField++;
+        if(profile.resume) filledField++;
+        if(profile.location) filledField++;
+        if(profile.github) filledField++;
+        if(profile.linkdin) filledField++;
 
         profileCompleteness = (filledField / 8 ) * 100;
       }
